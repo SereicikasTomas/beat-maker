@@ -1,6 +1,6 @@
 Beat maker
 
 - HTML5
-- Typescript
+- TypeScript
 - SCSS
 - Parcel-Bundler
