@@ -48,9 +48,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-svg {
-  width: 3.5rem;
-  height: 2.5rem;
+.svg {
   pointer-events: none;
 }
 
@@ -69,6 +67,26 @@ svg {
 
     &:not(:first-child) {
       margin-top: 5rem;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      
+      .mute {
+        padding: 1rem 1rem .8rem 1rem;
+        border: none;
+        cursor: pointer;
+        background-color: rgb(59, 58, 56);
+        outline: none;
+        border-radius: 1rem;
+
+        .svg {
+          height: 2rem;
+          width: 2.5rem;
+          fill: white;
+        }
+      }
     }
 
     .pads {
