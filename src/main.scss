@@ -53,3 +53,47 @@ svg {
   height: 2.5rem;
   pointer-events: none;
 }
+
+.sequencer {
+  width: 100vw;
+  margin-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+
+    &:not(:first-child) {
+      margin-top: 5rem;
+    }
+
+    .pads {
+      margin-left: 5rem;
+      display: flex;
+
+      .pad {
+        height: 8rem;
+        width: 8rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        margin: 1rem;
+      }
+
+      .kick-pad {
+        background-color: rgb(161, 197, 226);
+      }
+
+      .snare-pad {
+        background-color: rgb(200, 161, 226);
+      }
+
+      .hihat-pad {
+        background-color: rgb(161, 226, 186);
+      }
+    }
+  }
+}
