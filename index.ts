@@ -86,7 +86,7 @@ class DrumKit {
 
     // Check if it is playing, if not set interval id
     if (!this.isPlaying) {
-      this.isPlaying = setInterval(() => {
+      this.isPlaying = window.setInterval(() => {
         this.repeat();
       }, interval);
     } else {
