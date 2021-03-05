@@ -10,9 +10,13 @@ class DrumKit {
   constructor() {
     this.pads = document.querySelectorAll('.pad') as NodeListOf<HTMLElement>;
     this.playButton = document.querySelector('.play') as HTMLElement;
-    this.kickSound = document.querySelector('.kick-sound') as HTMLElement;
-    this.snareSound = document.querySelector('.snare-sound') as HTMLElement;
-    this.hihatSound = document.querySelector('.hihat-sound') as HTMLElement;
+    this.kickSound = document.querySelector('.kick-sound') as HTMLMediaElement;
+    this.snareSound = document.querySelector(
+      '.snare-sound'
+    ) as HTMLMediaElement;
+    this.hihatSound = document.querySelector(
+      '.hihat-sound'
+    ) as HTMLMediaElement;
     this.index = 0;
     this.beatsPerMinute = 120;
   }
