@@ -11,6 +11,7 @@ class DrumKit {
   index;
   beatsPerMinute;
   isPlaying: number | null;
+  muteBtns;
 
   constructor() {
     this.pads = document.querySelectorAll('.pad') as NodeListOf<HTMLElement>;
@@ -31,6 +32,7 @@ class DrumKit {
     this.index = 0;
     this.beatsPerMinute = 120;
     this.isPlaying = null;
+    this.muteBtns = document.querySelectorAll(".mute") as NodeListOf<HTMLElement>;
   }
 
   /**
