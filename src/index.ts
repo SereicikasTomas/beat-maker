@@ -39,9 +39,9 @@ class DrumKit {
 
 const drumKit = new DrumKit();
 
-drumKit.pads.forEach(pad => {
+drumKit.pads.forEach((pad) => {
   pad.addEventListener('click', drumKit.activePad);
-})
+});
 
 drumKit.playButton.addEventListener('click', () => {
   drumKit.play();
