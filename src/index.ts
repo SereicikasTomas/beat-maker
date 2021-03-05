@@ -8,7 +8,7 @@ class DrumKit {
   beatsPerMinute;
 
   constructor() {
-    this.pads = document.querySelectorAll('.pad') as NodeListOf<Element>;
+    this.pads = document.querySelectorAll('.pad') as NodeListOf<HTMLElement>;
     this.playButton = document.querySelector('.play') as HTMLElement;
     this.kickSound = document.querySelector('.kick-sound') as HTMLElement;
     this.snareSound = document.querySelector('.snare-sound') as HTMLElement;
