@@ -6,6 +6,7 @@ class DrumKit {
   hihatSound;
   index;
   beatsPerMinute;
+  isPlaying: number | null;
 
   constructor() {
     this.pads = document.querySelectorAll('.pad') as NodeListOf<HTMLElement>;
@@ -19,20 +20,31 @@ class DrumKit {
     ) as HTMLMediaElement;
     this.index = 0;
     this.beatsPerMinute = 120;
+    this.isPlaying = null;
   }
 
+  /**
+   * Toggle active pad
+   * @param e 
+   */
   activePad(e: Event) {
     const target = e.target as HTMLElement;
     target.classList.toggle('active');
   }
 
+  /**
+   * Play sound of all active pads
+   */
   repeat() {
-    // get the remainder so that on the last value it resets to zero
+    // Get the remainder so that on the last value it resets to zero
     let step = this.index % (this.pads.length / 3);
-    const acitveBars = document.querySelectorAll(
+
+    const acitvePads = document.querySelectorAll(
       `.b${step}`
     ) as NodeListOf<HTMLElement>;
-    acitveBars.forEach((bar) => {
+
+    // Loop through all the pads
+    acitvePads.forEach((bar) => {
       bar.style.animation = 'playSound .3s alternate 2 ease';
       if (bar.classList.contains('active')) {
         if (bar.classList.contains('kick-pad')) {
@@ -50,14 +62,40 @@ class DrumKit {
         }
       }
     });
+
+    // Update index so it would continue the loop
     this.index++;
   }
 
+  /**
+   * Plays the sounds
+   */
   play() {
+    // Set the interval
     const interval = (60 / this.beatsPerMinute) * 1000;
-    setInterval(() => {
-      this.repeat();
-    }, interval);
+
+    // Check if it is playing, if not set interval id
+    if (!this.isPlaying) {
+      this.isPlaying = setInterval(() => {
+        this.repeat();
+      }, interval);
+    } else {
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+    }
+  }
+
+  /**
+   * Update play button
+   */
+  updatePlayBtn() {
+    if (!this.isPlaying) {
+      this.playButton.innerText = 'Pause';
+      this.playButton.classList.add('active');
+    } else {
+      this.playButton.innerText = 'Play';
+      this.playButton.classList.remove('active');
+    }
   }
 }
 
@@ -71,5 +109,6 @@ drumKit.pads.forEach((pad) => {
 });
 
 drumKit.playButton.addEventListener('click', () => {
+  drumKit.updatePlayBtn();
   drumKit.play();
 });
