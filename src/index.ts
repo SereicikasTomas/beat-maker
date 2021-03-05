@@ -17,8 +17,9 @@ class DrumKit {
     this.beatsPerMinute = 120;
   }
 
-  activePad() {
-    this.classList.toggle('active');
+  activePad(e: Event) {
+    const target = e.target as HTMLElement;
+    target.classList.toggle('active');
   }
 
   repeat() {
