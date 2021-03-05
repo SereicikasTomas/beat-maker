@@ -29,9 +29,28 @@ class DrumKit {
   repeat() {
     // get the remainder so that on the last value it resets to zero
     let step = this.index % (this.pads.length / 3);
-    const acitveBar = document.querySelectorAll(`.b${step}`);
+    const acitveBars = document.querySelectorAll(
+      `.b${step}`
+    ) as NodeListOf<HTMLElement>;
+    acitveBars.forEach((bar) => {
+      bar.style.animation = 'playSound .3s alternate 2 ease';
+      if (bar.classList.contains('active')) {
+        if (bar.classList.contains('kick-pad')) {
+          // Let's the sound play even if the previous one is still playing
+          this.kickSound.currentTime = 0;
+          this.kickSound.play();
+        }
+        if (bar.classList.contains('snare-pad')) {
+          this.snareSound.currentTime = 0;
+          this.snareSound.play();
+        }
+        if (bar.classList.contains('hihat-pad')) {
+          this.hihatSound.currentTime = 0;
+          this.hihatSound.play();
+        }
+      }
+    });
     this.index++;
-    console.log(step);
   }
 
   play() {
@@ -46,6 +65,9 @@ const drumKit = new DrumKit();
 
 drumKit.pads.forEach((pad) => {
   pad.addEventListener('click', drumKit.activePad);
+  pad.addEventListener('animationend', function () {
+    this.style.animation = '';
+  });
 });
 
 drumKit.playButton.addEventListener('click', () => {
