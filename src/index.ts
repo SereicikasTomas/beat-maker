@@ -1,6 +1,10 @@
 class DrumKit {
   pads;
   playButton;
+  currentKick;
+  currentSnare;
+  currentHihat;
+  selects;
   kickSound;
   snareSound;
   hihatSound;
@@ -11,6 +15,9 @@ class DrumKit {
   constructor() {
     this.pads = document.querySelectorAll('.pad') as NodeListOf<HTMLElement>;
     this.playButton = document.querySelector('.play') as HTMLElement;
+    this.currentKick = '../allSounds/kick-classic.wav';
+    this.currentSnare = '../allSounds/snare-acoustic01.wav';
+    this.currentHihat = '../allSounds/hihat-acoustic01.wav';
     this.kickSound = document.querySelector('.kick-sound') as HTMLMediaElement;
     this.snareSound = document.querySelector(
       '.snare-sound'
@@ -18,6 +25,9 @@ class DrumKit {
     this.hihatSound = document.querySelector(
       '.hihat-sound'
     ) as HTMLMediaElement;
+    this.selects = document.querySelectorAll(
+      'select'
+    ) as NodeListOf<HTMLSelectElement>;
     this.index = 0;
     this.beatsPerMinute = 120;
     this.isPlaying = null;
@@ -25,7 +35,7 @@ class DrumKit {
 
   /**
    * Toggle active pad
-   * @param e 
+   * @param e
    */
   activePad(e: Event) {
     const target = e.target as HTMLElement;
@@ -97,9 +107,30 @@ class DrumKit {
       this.playButton.classList.remove('active');
     }
   }
+
+  changeSound(e: Event) {
+    const { name, value } = e.target as HTMLSelectElement;
+    console.log(this.kickSound);
+    switch (name) {
+      case 'kick-select':
+        this.kickSound.src = value;
+        break;
+      case 'snare-select':
+        this.snareSound.src = value;
+        break;
+      case 'hihat-select':
+        this.hihatSound.src = value;
+        break;
+      default:
+        return;
+    }
+    console.log(name, value);
+  }
 }
 
 const drumKit = new DrumKit();
+
+// Events
 
 drumKit.pads.forEach((pad) => {
   pad.addEventListener('click', drumKit.activePad);
@@ -111,4 +142,10 @@ drumKit.pads.forEach((pad) => {
 drumKit.playButton.addEventListener('click', () => {
   drumKit.updatePlayBtn();
   drumKit.play();
+});
+
+drumKit.selects.forEach((select) => {
+  select.addEventListener('change', (e) => {
+    drumKit.changeSound(e);
+  });
 });
