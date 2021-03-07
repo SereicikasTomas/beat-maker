@@ -32,7 +32,9 @@ class DrumKit {
     this.index = 0;
     this.beatsPerMinute = 120;
     this.isPlaying = null;
-    this.muteBtns = document.querySelectorAll(".mute") as NodeListOf<HTMLElement>;
+    this.muteBtns = document.querySelectorAll(
+      '.mute'
+    ) as NodeListOf<HTMLElement>;
   }
 
   /**
