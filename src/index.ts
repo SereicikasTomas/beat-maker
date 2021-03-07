@@ -1,3 +1,5 @@
+const sounds = require("./allSounds/*.wav");
+
 class DrumKit {
   pads;
   playButton;
@@ -133,6 +135,8 @@ class DrumKit {
 }
 
 const drumKit = new DrumKit();
+
+console.log(sounds);
 
 // Events
 
