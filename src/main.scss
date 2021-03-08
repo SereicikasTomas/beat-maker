@@ -90,16 +90,26 @@ body {
 
       .mute {
         padding: 1rem 1rem 0.8rem 1rem;
-        border: none;
+        border: 1px solid;
         cursor: pointer;
         background-color: var(--black);
         outline: none;
         border-radius: var(--border-radius);
+        transition: all .3s;
 
         .svg {
           height: 2rem;
           width: 2.5rem;
-          fill: white;
+          fill: var(--white);
+        }
+      }
+
+      .active{
+        border: 1px solid var(--black);
+        background-color: var(--white);
+
+        .svg {
+          fill: var(--black);
         }
       }
 
