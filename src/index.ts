@@ -47,9 +47,11 @@ class DrumKit {
     const soundKeys = Object.keys(sounds);
 
     // Separate names by types
-    const kickOptions = soundKeys.filter((sound) => sound.includes('kick'));
-    const snareOptions = soundKeys.filter((sound) => sound.includes('snare'));
-    const hihatOptions = soundKeys.filter((sound) => sound.includes('hihat'));
+    const getOptions = (type: string) =>
+      soundKeys.filter((sound) => sound.includes(type));
+    const kickOptions = getOptions('kick');
+    const snareOptions = getOptions('snare');
+    const hihatOptions = getOptions('hihat');
 
     // Removes dash and turns first letter uppercase
     const cleanName = (name: string) =>
@@ -66,6 +68,10 @@ class DrumKit {
     this.selects.forEach((element) => {
       switch (element.name) {
         case 'kick-select':
+          // Set initial sound to first sound
+          this.kickSound.src = sounds[kickOptions[0]];
+
+          // Add option elements
           kickOptions.forEach((option) =>
             element.insertAdjacentHTML(
               'beforeend',
@@ -74,6 +80,10 @@ class DrumKit {
           );
           break;
         case 'snare-select':
+          // Set initial sound to first sound
+          this.snareSound.src = sounds[snareOptions[0]];
+
+          // Add option elements
           snareOptions.forEach((option) =>
             element.insertAdjacentHTML(
               'beforeend',
@@ -82,6 +92,10 @@ class DrumKit {
           );
           break;
         case 'hihat-select':
+          // Set initial sound to first sound
+          this.hihatSound.src = sounds[hihatOptions[0]];
+
+          // Add option elements
           hihatOptions.forEach((option) =>
             element.insertAdjacentHTML(
               'beforeend',
@@ -170,6 +184,10 @@ class DrumKit {
     }
   }
 
+  /**
+   * Change audio src on selection
+   * @param e 
+   */
   changeSound(e: Event) {
     const { name, value } = e.target as HTMLSelectElement;
     switch (name) {
