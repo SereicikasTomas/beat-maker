@@ -1,4 +1,4 @@
-const sounds = require("./allSounds/*.wav");
+const sounds = require('./allSounds/*.wav');
 
 class DrumKit {
   pads;
@@ -37,6 +37,62 @@ class DrumKit {
     this.muteBtns = document.querySelectorAll(
       '.mute'
     ) as NodeListOf<HTMLElement>;
+  }
+
+  /**
+   * Dinamically adds options to selects by types from imported sounds
+   */
+  addOptions() {
+    // Get array of all sound key names
+    const soundKeys = Object.keys(sounds);
+
+    // Separate names by types
+    const kickOptions = soundKeys.filter((sound) => sound.includes('kick'));
+    const snareOptions = soundKeys.filter((sound) => sound.includes('snare'));
+    const hihatOptions = soundKeys.filter((sound) => sound.includes('hihat'));
+
+    // Removes dash and turns first letter uppercase
+    const cleanName = (name: string) =>
+      name
+        .split('-')
+        .map((name) => name[0].toUpperCase() + name.substring(1, name.length))
+        .join(' ');
+
+    // Create HTML markup for option node
+    const optionMarkup = (src: string, name: string) =>
+      `<option value=${src}>${name}</option>`;
+
+    // Inesrt correct options in correct select elements
+    this.selects.forEach((element) => {
+      switch (element.name) {
+        case 'kick-select':
+          kickOptions.forEach((option) =>
+            element.insertAdjacentHTML(
+              'beforeend',
+              optionMarkup(sounds[option], cleanName(option))
+            )
+          );
+          break;
+        case 'snare-select':
+          snareOptions.forEach((option) =>
+            element.insertAdjacentHTML(
+              'beforeend',
+              optionMarkup(sounds[option], cleanName(option))
+            )
+          );
+          break;
+        case 'hihat-select':
+          hihatOptions.forEach((option) =>
+            element.insertAdjacentHTML(
+              'beforeend',
+              optionMarkup(sounds[option], cleanName(option))
+            )
+          );
+          break;
+        default:
+          return;
+      }
+    });
   }
 
   /**
@@ -116,7 +172,6 @@ class DrumKit {
 
   changeSound(e: Event) {
     const { name, value } = e.target as HTMLSelectElement;
-    console.log(this.kickSound);
     switch (name) {
       case 'kick-select':
         this.kickSound.src = value;
@@ -130,13 +185,12 @@ class DrumKit {
       default:
         return;
     }
-    console.log(name, value);
   }
 }
 
 const drumKit = new DrumKit();
 
-console.log(sounds);
+drumKit.addOptions();
 
 // Events
 
