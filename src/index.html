@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+    <meta
+      name="description"
+      content="App that helps you make beats."
+    />
+    <meta
+      name="keywords"
+      content="Beat-Maker, Beat,Tomas, Sereicikas, Tomas Sereicikas"
+    />
+    <meta name="author" content="Tomas Sereicikas" />
     <link rel="stylesheet" href="main.scss" />
     <script defer src="index.ts"></script>
     <title>Beat-Maker</title>
@@ -13,12 +23,21 @@
       <div class="track kick-track">
         <div class="controls">
           <h2>Kick</h2>
-          <button data-track="0" class="mute kick-volume">
+          <button
+            data-track="0"
+            class="mute kick-volume"
+            aria-label="Mute Kick"
+          >
             <svg class="svg">
               <use xlink:href="img/sprite.svg#mute"></use>
             </svg>
           </button>
-          <select name="kick-select" id="kick-select" class="select">
+          <select
+            name="kick-select"
+            id="kick-select"
+            class="select"
+            aria-label="Kick select"
+          >
             <!-- <option value="allSounds/kick-classic.wav">Classic Kick</option> -->
           </select>
         </div>
@@ -36,12 +55,21 @@
       <div class="track snare-track">
         <div class="controls">
           <h2>Snare</h2>
-          <button data-track="1" class="mute snare-volume">
+          <button
+            data-track="1"
+            class="mute snare-volume"
+            aria-label="Mute Snare"
+          >
             <svg class="svg">
               <use xlink:href="img/sprite.svg#mute"></use>
             </svg>
           </button>
-          <select name="snare-select" id="snare-select" class="select">
+          <select
+            name="snare-select"
+            id="snare-select"
+            class="select"
+            aria-label="Snare select"
+          >
             <!-- <option value="allSounds/snare-acoustic.wav">
               Classic Snare
             </option> -->
@@ -61,12 +89,21 @@
       <div class="track hihat-track">
         <div class="controls">
           <h2>Hihat</h2>
-          <button data-track="0" class="mute hihat-volume">
+          <button
+            data-track="0"
+            class="mute hihat-volume"
+            aria-label="Mute Hihat"
+          >
             <svg class="svg">
               <use xlink:href="img/sprite.svg#mute"></use>
             </svg>
           </button>
-          <select name="hihat-select" id="hihat-select" class="select">
+          <select
+            name="hihat-select"
+            id="hihat-select"
+            class="select"
+            aria-label="Hihat select"
+          >
             <!-- <option value="allSounds/hihat-acoustic.wav">Hihat Acoustic</option> -->
           </select>
         </div>
