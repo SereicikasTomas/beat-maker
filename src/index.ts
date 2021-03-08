@@ -186,7 +186,7 @@ class DrumKit {
 
   /**
    * Change audio src on selection
-   * @param e 
+   * @param e
    */
   changeSound(e: Event) {
     const { name, value } = e.target as HTMLSelectElement;
@@ -202,6 +202,45 @@ class DrumKit {
         break;
       default:
         return;
+    }
+  }
+
+  /**
+   * Mute and unmute sounds
+   * @param e 
+   */
+  mute(e: Event) {
+    const target = e.target as HTMLSelectElement;
+    const muteIndex = target.getAttribute('data-track');
+    target.classList.toggle('active');
+    if (target.classList.contains('active')) {
+      switch (muteIndex) {
+        case '0':
+          this.kickSound.volume = 0;
+          break;
+        case '1':
+          this.snareSound.volume = 0;
+          break;
+        case '2':
+          this.hihatSound.volume = 0;
+          break;
+        default:
+          return;
+      }
+    } else {
+      switch (muteIndex) {
+        case '0':
+          this.kickSound.volume = 1;
+          break;
+        case '1':
+          this.snareSound.volume = 1;
+          break;
+        case '2':
+          this.hihatSound.volume = 1;
+          break;
+        default:
+          return;
+      }
     }
   }
 }
@@ -227,5 +266,11 @@ drumKit.playButton.addEventListener('click', () => {
 drumKit.selects.forEach((select) => {
   select.addEventListener('change', (e) => {
     drumKit.changeSound(e);
+  });
+});
+
+drumKit.muteBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    drumKit.mute(e);
   });
 });
