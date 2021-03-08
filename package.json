@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "parcel serve src/index.html --open",
-    "start": "concurrently -r \"npm:serve\" \"npm:type-check-w\"",
+    "start": "concurrently -r \"npm:serve\" \"npm:ts\"",
     "build": "tsc --noEmit && rm -rf dist && parcel build src/index.html",
     "clean": "rm -rf dist",
     "ts": "tsc --noEmit --watch"
