@@ -83,7 +83,7 @@ body {
         margin-left: 2rem;
       }
 
-      h2{
+      h2 {
         font-size: 3.5rem;
         width: 9rem;
       }
@@ -95,7 +95,7 @@ body {
         background-color: var(--black);
         outline: none;
         border-radius: var(--border-radius);
-        transition: all .3s;
+        transition: all 0.3s;
 
         .svg {
           height: 2rem;
@@ -104,7 +104,7 @@ body {
         }
       }
 
-      .active{
+      .active {
         border: 1px solid var(--black);
         background-color: var(--white);
 
@@ -168,9 +168,37 @@ body {
     background-color: var(--black);
     color: var(--white);
   }
+
+  .tempo {
+    margin-top: 5rem;
+
+    .tempo-slider {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: var(--border-radius);
+      background-color: var(--black);
+      width: 40rem;
+      display: block;
+
+      &::-webkit-slider-thumb {
+        appearance: none;
+        border-radius: 5px;
+        width: 25px;
+        height: 25px;
+        background: var(--white);
+      }
+    }
+
+    .tempo-label {
+      font-size: 2rem;
+    }
+  }
 }
 
-@keyframes playSound{
+@keyframes playSound {
   from {
     transform: scale(1);
   }
