@@ -12,8 +12,9 @@ class DrumKit {
   hihatSound;
   index;
   beatsPerMinute;
-  isPlaying: number | null;
+  isPlaying;
   muteBtns;
+  tempoSlider;
 
   constructor() {
     this.pads = document.querySelectorAll('.pad') as NodeListOf<HTMLElement>;
@@ -33,10 +34,13 @@ class DrumKit {
     ) as NodeListOf<HTMLSelectElement>;
     this.index = 0;
     this.beatsPerMinute = 120;
-    this.isPlaying = null;
+    this.isPlaying = 0;
     this.muteBtns = document.querySelectorAll(
       '.mute'
     ) as NodeListOf<HTMLElement>;
+    this.tempoSlider = document.querySelector(
+      '.tempo-slider'
+    ) as HTMLInputElement;
   }
 
   /**
@@ -154,6 +158,14 @@ class DrumKit {
   }
 
   /**
+   * Clear interval
+   */
+  clearPlayInterval() {
+    clearInterval(this.isPlaying);
+    this.isPlaying = 0;
+  }
+
+  /**
    * Plays the sounds
    */
   play() {
@@ -166,8 +178,7 @@ class DrumKit {
         this.repeat();
       }, interval);
     } else {
-      clearInterval(this.isPlaying);
-      this.isPlaying = null;
+      this.clearPlayInterval();
     }
   }
 
@@ -207,7 +218,7 @@ class DrumKit {
 
   /**
    * Mute and unmute sounds
-   * @param e 
+   * @param e
    */
   mute(e: Event) {
     const target = e.target as HTMLSelectElement;
@@ -243,6 +254,34 @@ class DrumKit {
       }
     }
   }
+
+  /**
+   * Change text value of tempo
+   * @param e 
+   */
+  changeTempo(e: Event) {
+    const { value } = e.target as HTMLSelectElement;
+    const tempoText = document.querySelector('.tempo-nr') as HTMLElement;
+    tempoText.innerHTML = value;
+  }
+
+  /**
+   * Update beat per minute tempo for sound
+   * @param e 
+   */
+  updateTempo(e: Event) {
+    const { value } = e.target as HTMLSelectElement;
+    // Set new beat value
+    this.beatsPerMinute = parseInt(value);
+
+    // Clear interval
+    this.clearPlayInterval();
+
+    // Continue playing if the sound is playing
+    if(this.playButton.classList.contains('active')){
+      this.play();
+    }
+  }
 }
 
 const drumKit = new DrumKit();
@@ -273,4 +312,12 @@ drumKit.muteBtns.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     drumKit.mute(e);
   });
+});
+
+drumKit.tempoSlider.addEventListener('input', (e) => {
+  drumKit.changeTempo(e);
+});
+
+drumKit.tempoSlider.addEventListener('change', (e) => {
+  drumKit.updateTempo(e);
 });
