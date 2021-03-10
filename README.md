@@ -1,4 +1,4 @@
-#Beat maker 🔈🔉🔊
+# Beat maker 🔈🔉🔊
 This is a web app that lets you create funky beats
 
 ## Technologies used
