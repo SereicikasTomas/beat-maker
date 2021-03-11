@@ -292,8 +292,8 @@ drumKit.addOptions();
 
 drumKit.pads.forEach((pad) => {
   pad.addEventListener('click', drumKit.activePad);
-  pad.addEventListener('animationend', function () {
-    this.style.animation = '';
+  pad.addEventListener('animationend', () => {
+    pad.style.animation = '';
   });
 });
 
