@@ -12,7 +12,7 @@
     }
   }
   @if ($breakpoint == tab-land) {
-    // 1200px-1800px
+    // 900px-1200px
     @media only screen and (max-width: 75em) {
       @content;
     }
