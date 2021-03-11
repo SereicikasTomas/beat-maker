@@ -41,8 +41,8 @@
 
 html {
   font-size: 62.5%;
-  @include respond(tab-port) {
-    font-size: 56.25%;
+  @include respond(tab-land) {
+    font-size: 50%;
   }
   @include respond(big-desk) {
     font-size: 75%;
@@ -84,6 +84,12 @@ body {
       }
 
       h2 {
+        font-size: 3rem;
+        width: 8rem;
+        @include respond(tab-land) {
+          font-size: 2.5rem;
+        }
+        @include respond(tab-port) {
         font-size: 3.5rem;
         width: 9rem;
       }
@@ -131,7 +137,19 @@ body {
         width: 8rem;
         border-radius: var(--border-radius);
         cursor: pointer;
-        margin: 1rem;
+        &:not(:last-child){
+          margin-right: 1rem;
+        }
+
+        @include respond(tab-land) {
+          height: 7rem;
+          width: 7rem;
+        }
+
+        @include respond(tab-port) {
+          height: 7.7rem;
+          width: 7.7rem;
+        }
       }
 
       .kick-pad {
