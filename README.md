@@ -8,7 +8,7 @@ This is a web app that lets you create funky beats.
 - Parcel
 
 ## Screenshots
-To be added...
+![Screenshot](beat_maker_screenshot.png?raw=true)
 
 ## Development
 To run the app locally:
