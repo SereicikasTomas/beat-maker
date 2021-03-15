@@ -40,12 +40,13 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 10px
   @include respond(tab-land) {
-    font-size: 50%;
+    font-size: 50%; // 8px
   }
+
   @include respond(big-desk) {
-    font-size: 75%;
+    font-size: 75%; // 12px
   }
 }
 
@@ -65,17 +66,20 @@ body {
   flex-direction: column;
   align-items: center;
 
+  @include respond(tab-land) {
+    padding: 0 6rem;
+  }
+
   @include respond(tab-port) {
     margin-top: 16vh;
+    padding: 0 10rem;
   }
 
   .track {
     display: flex;
-    align-items: center;
 
     @include respond(tab-port) {
       flex-wrap: wrap;
-      width: 90%;
     }
 
     &:not(:first-child) {
@@ -91,18 +95,20 @@ body {
       @include respond(tab-port) {
         justify-content: flex-start;
         flex-grow: 1;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
       }
 
       h2 {
         font-size: 3rem;
         width: 8rem;
-        @include respond(tab-land) {
-          font-size: 2.5rem;
-        }
         @include respond(tab-port) {
           font-size: 3.5rem;
           width: 12rem;
+        }
+
+        @include respond(phone) {
+          font-size: 2.5rem;
+          width: 9rem;
         }
       }
 
@@ -159,18 +165,18 @@ body {
         width: 8rem;
         border-radius: var(--border-radius);
         cursor: pointer;
-        &:not(:last-child){
+        &:not(:last-child) {
           margin-right: 1rem;
-        }
-
-        @include respond(tab-land) {
-          height: 7rem;
-          width: 7rem;
         }
 
         @include respond(tab-port) {
           height: 7.7rem;
           width: 7.7rem;
+        }
+
+        @include respond(phone) {
+          height: 5.5rem;
+          width: 4.5rem;
         }
       }
 
@@ -198,7 +204,7 @@ body {
   }
 
   .play {
-    margin-top: 5rem;
+    margin-top: 6rem;
     padding: 1rem 2.5rem;
     font-size: 2rem;
     border: none;
@@ -226,8 +232,8 @@ body {
       &::-webkit-slider-thumb {
         appearance: none;
         border-radius: var(--border-radius);
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 2.8rem;
+        height: 2.8rem;
         background: var(--white);
       }
     }
