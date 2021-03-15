@@ -61,12 +61,13 @@ body {
 
 .sequencer {
   width: 100vw;
-  margin-top: 25vh;
+  margin-top: 22vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @include respond(tab-land) {
+    margin-top: 25vh;
     padding: 0 6rem;
   }
 
