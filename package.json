@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "parcel serve src/index.html --open",
     "start": "concurrently -r \"npm:serve\" \"npm:ts\"",
-    "build": "tsc --noEmit && rm -rf dist && parcel build src/index.html --public-url /beat-maker/",
+    "build": "tsc --noEmit && rm -rf dist && parcel build src/index.html --public-url /beat-maker",
     "clean": "rm -rf dist",
     "ts": "tsc --noEmit --watch",
     "deploy": "gh-pages -d dist"
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/SereicikasTomas/beat-maker/issues"
   },
-  "homepage": "https://sereicikastomas.github.io/beat-maker/",
+  "homepage": "https://sereicikastomas.github.io/beat-maker",
   "devDependencies": {
     "@types/node": "^14.14.32",
     "concurrently": "^6.0.0",
