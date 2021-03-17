@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/SereicikasTomas/beat-maker/issues"
   },
-  "homepage": "https://sereicikastomas.github.io/beat-maker",
+  "homepage": "https://sereicikastomas.github.io/beat-maker/",
   "devDependencies": {
     "@types/node": "^14.14.32",
     "concurrently": "^6.0.0",
