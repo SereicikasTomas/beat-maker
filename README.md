@@ -13,10 +13,10 @@ This is a web app that lets you create funky beats.
 ## Development
 To run the app locally:
 - Clone the repository
-- Install dependencies with `npm i`.
-- Start up parcel and typescript with `npm start`. 
-- *Optional* You can start up parcel without type checking with `npm run serve`.
+- Install dependencies with `npm i`
+- Start up parcel and typescript with `npm start`
+- *Optional* You can start up parcel without type checking with `npm run serve`
 
-To prepare deployment build use `npm run buil`.
+To prepare deployment build use `npm run buil`
 
-To remove dist folder use `npm run clean`.
+To remove dist folder use `npm run clean`
