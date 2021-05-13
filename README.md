@@ -1,6 +1,8 @@
 # Beat maker 🔈🔉🔊
 This is a web app that lets you create funky beats.
 
+You can try it here: https://sereicikastomas.github.io/beat-maker/
+
 ## Technologies used
 - HTML5
 - TypeScript
